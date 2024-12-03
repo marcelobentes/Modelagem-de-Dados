@@ -38,7 +38,7 @@ create table project(
     Plocation varchar(15),
     Dnum int not null,
     primary key(Pnumber),
-    foreign key(Pnumber) references departament(Dnumber),
+    foreign key(Dnum) references departament(Dnumber),
     unique(Pname)
 );
 
@@ -61,4 +61,47 @@ create table dependent(
     foreign key(Essn) references employee(Ssn)
 );
 
+-- ALTER TABLES
+
+alter table employee
+	add constraint fk_employee
+    foreign key(Super_ssn) references employee(Ssn)
+    on delete set null
+    on update cascade;
+
 show tables
+
+-- inserção de dados no BD Company
+
+
+use company;
+select * from employee;
+select * from dependent;
+select * from departament;
+select * from dept_locations;
+select * from project;
+select * from works_on;
+
+insert into employee values ('John', 'B', 'Smith', 123456789,'1965-01-09','731-Fondren-Houston-TX','M',3000,null,5);
+
+insert into employee values ('Roud', 'G', 'Fraid', 523456789,'1965-01-09','731-Fondren-Houston-TX','M',3000,null,5),
+	('Marie', 'M', 'Said', 223456789,'1965-01-09','731-Fondren-Houston-TX','M',3000,null,5),
+    ('Wagfor', 'D', 'Void', 323456789,'1965-01-09','731-Fondren-Houston-TX','M',3000,null,5);
+    
+insert into dependent values (323456789,'Alice','F','1986-04-05','Daughter');
+
+insert into departament values('Research',5, 323456789,'1988-05-22');
+
+insert into dept_locations values(5,'Houston'); 
+
+insert into project values('ProductX',5,'Bellaire',5);
+
+insert into works_on values(223456789,5,40.0);
+
+-- recuperando dados
+
+select Ssn, Fname, Dname from employee e, departament d where (e.Ssn = d.Mgr_ssn);
+select Fname, DependentName, Relationship from employee, dependent where Essn = Ssn;
+select Pname, Essn, Fname, Hours
+	from project, works_on,employee
+		where Pnumber = Pno and Essn = Ssn;
