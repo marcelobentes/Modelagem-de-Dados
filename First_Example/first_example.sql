@@ -28,9 +28,10 @@ CREATE TABLE favorite_food(
     references person(person_id)
 );
 -- DESCRIÇÃO DA TABELA
-desc favorite_food
+desc favorite_food;
 
 -- INSERINDO DADOS NA TABELA
+
 INSERT INTO person values ('3', 'Marcelo', 'Rocha', 'M', '1985-10-25','rua A', 'Cidade Z', 'ZP','Brasil', '26584-89'),
 ('1', 'Marcio', 'Rocha', 'M', '1985-10-25','rua A', 'Cidade Z', 'ZP','Brasil', '26584-89'),
 ('2', 'Mauro', 'Rocha', 'M', '1985-10-25','rua A', 'Cidade Z', 'ZP','Brasil', '26584-89');

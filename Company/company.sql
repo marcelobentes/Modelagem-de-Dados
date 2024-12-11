@@ -105,3 +105,25 @@ select Fname, DependentName, Relationship from employee, dependent where Essn = 
 select Pname, Essn, Fname, Hours
 	from project, works_on,employee
 		where Pnumber = Pno and Essn = Ssn;
+        
+
+-- JOIN Statement
+desc employee;
+desc works_on;
+desc departament;
+select * from departament;
+
+select * from employee JOIN works_on ON Ssn = Essn;
+select Fname, Lname, Address, Dname
+	from(employee JOIN departament on Dno=Dnumber)
+    where Dname = 'Research';
+    
+-- JOIN com mais de 3 tabelas
+select concat(Fname, ' ',Lname) as Name, Dno, Pname, Pno, Plocation from employee
+		inner join works_on on Ssn = Essn
+        inner join project on Pno = Pnumber
+        inner join departament on Dno = Dnumber
+        order by Pnumber;
+        
+        
+        
