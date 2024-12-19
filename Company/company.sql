@@ -61,7 +61,7 @@ create table dependent(
     foreign key(Essn) references employee(Ssn)
 );
 
--- ALTER TABLES
+-- ALTER TABLES;
 
 alter table employee
 	add constraint fk_employee
@@ -69,10 +69,9 @@ alter table employee
     on delete set null
     on update cascade;
 
-show tables
+show tables;
 
--- inserção de dados no BD Company
-
+-- inserção de dados no BD Company;
 
 use company;
 select * from employee;
